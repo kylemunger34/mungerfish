@@ -33,7 +33,7 @@ function ManageItems({
 
         try {
             const response = await fetch(
-                `http://localhost:3001${endpoint}`,
+                `${import.meta.env.VITE_API_URL}${endpoint}`,
                 {
                     method: "POST",
                     headers: {
@@ -103,7 +103,7 @@ function ManageItems({
 
         try {
             const response = await fetch(
-                `http://localhost:3001/api/${type}/${id}`,
+                `${import.meta.env.VITE_API_URL}/api/${type}/${id}`,
                 {
                     method: "DELETE",
                 }

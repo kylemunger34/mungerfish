@@ -35,7 +35,7 @@ function CatchTrends({
     });
 
     useEffect(() => {
-        fetch("${import.meta.env.VITE_API_URL}/api/fish")
+        fetch(`${import.meta.env.VITE_API_URL}/api/fish`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch fish");

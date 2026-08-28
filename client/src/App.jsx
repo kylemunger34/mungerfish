@@ -39,19 +39,19 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      fetch("${import.meta.env.VITE_API_URL}/api/rods").then((response) =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/rods`).then((response) =>
         response.json()
       ),
-      fetch("${import.meta.env.VITE_API_URL}/api/baits").then((response) =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/baits`).then((response) =>
         response.json()
       ),
-      fetch("${import.meta.env.VITE_API_URL}/api/colors").then((response) =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/colors`).then((response) =>
         response.json()
       ),
-      fetch("${import.meta.env.VITE_API_URL}/api/weights").then((response) =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/weights`).then((response) =>
         response.json()
       ),
-      fetch("${import.meta.env.VITE_API_URL}/api/species").then((response) =>
+      fetch(`${import.meta.env.VITE_API_URL}/api/species`).then((response) =>
         response.json()
       ),
     ])
@@ -87,7 +87,7 @@ function App() {
   const handleDeleteRod = async () => {
       try {
           const response = await fetch(
-              `http://localhost:3001/api/rods/${selectedRod.rod_id}`,
+              `${import.meta.env.VITE_API_URL}/api/rods/${selectedRod.rod_id}`,
               {
                   method: "DELETE",
               }
@@ -118,7 +118,7 @@ function App() {
   const handleSaveRod = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/api/rods/${selectedRod.rod_id}`,
+        `${import.meta.env.VITE_API_URL}/${selectedRod.rod_id}`,
         {
           method: "PUT",
           headers: {
@@ -162,7 +162,7 @@ function App() {
   const handleAddRod = async () => {
       try {
           const response = await fetch(
-              "${import.meta.env.VITE_API_URL}/api/rods",
+              `${import.meta.env.VITE_API_URL}/api/rods`,
               {
                   method: "POST",
                   headers: {
@@ -329,7 +329,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:3001/api/rods/${rodId}/position`,
+        `${import.meta.env.VITE_API_URL}/api/rods/${rodId}/position`,
         {
           method: "PUT",
           headers: {
@@ -385,7 +385,7 @@ function App() {
 
         try {
           const response = await fetch(
-            "${import.meta.env.VITE_API_URL}/api/fish",
+            `${import.meta.env.VITE_API_URL}/api/fish`,
             {
               method: "POST",
               headers: {
@@ -740,7 +740,7 @@ function App() {
                   onClick={async () => {
                     try {
                       const response = await fetch(
-                        `http://localhost:3001/api/rods/${selectedRod.rod_id}`,
+                        `${import.meta.env.VITE_API_URL}/api/rods/${selectedRod.rod_id}`,
                         {
                           method: "DELETE",
                         }

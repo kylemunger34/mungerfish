@@ -28,7 +28,7 @@ function CatchRecords({
     });
 
     useEffect(() => {
-        fetch("${import.meta.env.VITE_API_URL}/api/fish")
+        fetch(`${import.meta.env.VITE_API_URL}/api/fish`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch fish");
@@ -520,7 +520,7 @@ function CatchRecords({
 
                                                 try {
                                                 const response = await fetch(
-                                                    `http://localhost:3001/api/fish/${fish.fish_id}`,
+                                                    `${import.meta.env.VITE_API_URL}/api/fish/${fish.fish_id}`,
                                                     {
                                                     method: "DELETE",
                                                     }
