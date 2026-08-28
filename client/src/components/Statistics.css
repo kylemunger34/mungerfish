@@ -1,0 +1,452 @@
+/* =========================
+   Statistics Page
+========================= */
+
+.statistics-page {
+  position: absolute;
+
+  inset: 0;
+
+  background: #ffffff;
+
+  padding: 2px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   Statistics Header
+========================= */
+
+.statistics-header {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #d9dddb;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  z-index: 10;
+}
+
+.statistics-header h2 {
+  font-size: 17px;
+
+  color: #263a35;
+
+  margin-right: auto;
+}
+
+.statistics-header-spacer {
+  width: 28px;
+  height: 28px;
+}
+
+
+
+/* =========================
+   Statistics Content
+========================= */
+
+.statistics-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding: 8px;
+
+  max-width: 600px;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+  overflow-y: auto;
+
+  flex: 1;
+
+  min-height: 0;
+}
+
+/* =========================
+   Statistics Filters
+========================= */
+
+.statistics-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.statistics-section-label {
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #71817a;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  padding: 4px;
+}
+
+/* =========================
+   Statistics Filters
+========================= */
+
+.statistics-filters {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.statistics-filter {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 7px 9px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #f5f8f6;
+
+  color: #263a35;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+
+.statistics-filter:hover {
+  background: #eef3f0;
+}
+
+.statistics-filter:active {
+  transform: scale(0.99);
+}
+
+.statistics-filter.selected {
+  background: #dcebe4;
+}
+
+/* Small checkbox */
+
+.statistics-checkbox {
+  width: 14px;
+  height: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #a9ccb9;
+  border-radius: 3px;
+
+  color: #263a35;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  flex-shrink: 0;
+}
+
+/* =========================
+   Statistics Chart
+========================= */
+/* =========================
+   Statistics Chart
+========================= */
+
+.statistics-chart-section {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0;
+
+  background: transparent;
+  border-radius: 0;
+}
+
+.statistics-chart {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statistics-pie {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(38, 58, 53, 0.08);
+}
+
+.statistics-total {
+  position: absolute;
+
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.statistics-total-number {
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #263a35;
+}
+
+.statistics-total-label {
+  font-size: 9px;
+
+  color: #71817a;
+}
+
+
+/* =========================
+   Statistics Legend
+========================= */
+
+.statistics-legend {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  align-self: stretch;
+}
+
+.statistics-legend-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px;
+
+  background: #ffffff;
+
+  border-radius: 8px;
+
+  border: 1px solid #e4e9e6;
+}
+
+/* Color indicator */
+
+.statistics-legend-dot {
+  width: 11px;
+  height: 11px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+/* Combination information */
+
+.statistics-legend-name {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  font-size: 11px;
+
+  color: #263a35;
+}
+
+/* Individual parts of the combination */
+
+.statistics-legend-part {
+  display: flex;
+  align-items: baseline;
+
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.statistics-legend-label {
+  color: #71817a;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  flex-shrink: 0;
+}
+
+.statistics-legend-part-value {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #263a35;
+
+  font-size: 11px;
+}
+
+/* Count and percentage */
+
+.statistics-legend-stats {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 1px;
+}
+
+.statistics-legend-count {
+  font-size: 12px;
+  font-weight: 700;
+
+  color: #263a35;
+}
+
+.statistics-legend-value {
+  font-size: 9px;
+
+  color: #71817a;
+}
+
+/* =========================
+   Statistics Date Filter
+========================= */
+
+.statistics-date-filter {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.statistics-date {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 8px;
+
+  background: #f5f8f6;
+
+  border-radius: 8px;
+}
+
+.statistics-date-label {
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #71817a;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statistics-date-input {
+  width: 100%;
+
+  min-width: 0;
+
+  padding: 6px 5px;
+
+  border: 1px solid #d9dddb;
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #263a35;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  outline: none;
+}
+
+.statistics-date-input:focus {
+  border-color: #8fb5a3;
+}
+
+.statistics-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100px;
+
+  padding: 12px;
+
+  color: #71817a;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-align: center;
+}
+
