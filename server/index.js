@@ -9,6 +9,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//Basic HTTPS/API Security
+const helmet = require("helmet");
+
+app.use(helmet());
+
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 100
+});
+
+app.use("/api", limiter);
+
 //Create db connection
 const db = mariadb.createPool({
     host: process.env.DB_HOST,
@@ -16,11 +30,16 @@ const db = mariadb.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+
     ssl: {
         ca: require("fs").readFileSync(process.env.DB_SSL_CA)
     },
+
     connectionLimit: 5,
-    timezone: 'America/New_York'
+    connectTimeout: 10000,
+    acquireTimeout: 15000,
+
+    timezone: "America/New_York"
 });
 
 //Return running message for trobuleshooting

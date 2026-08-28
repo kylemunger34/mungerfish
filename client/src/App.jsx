@@ -27,8 +27,6 @@ function App() {
   const [catchTrendsPage, setCatchTrendsPage] = useState(false);
   const [manageItemsPage, setManageItemsPage] = useState(false);
   const bodyRef = useRef(null);
-  
-
   const dragRef = useRef({
     rodId: null,
     offsetX: 0,
