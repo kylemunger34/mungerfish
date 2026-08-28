@@ -39,19 +39,19 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:3001/api/rods").then((response) =>
+      fetch("${import.meta.env.VITE_API_URL}/api/rods").then((response) =>
         response.json()
       ),
-      fetch("http://localhost:3001/api/baits").then((response) =>
+      fetch("${import.meta.env.VITE_API_URL}/api/baits").then((response) =>
         response.json()
       ),
-      fetch("http://localhost:3001/api/colors").then((response) =>
+      fetch("${import.meta.env.VITE_API_URL}/api/colors").then((response) =>
         response.json()
       ),
-      fetch("http://localhost:3001/api/weights").then((response) =>
+      fetch("${import.meta.env.VITE_API_URL}/api/weights").then((response) =>
         response.json()
       ),
-      fetch("http://localhost:3001/api/species").then((response) =>
+      fetch("${import.meta.env.VITE_API_URL}/api/species").then((response) =>
         response.json()
       ),
     ])
@@ -162,7 +162,7 @@ function App() {
   const handleAddRod = async () => {
       try {
           const response = await fetch(
-              "http://localhost:3001/api/rods",
+              "${import.meta.env.VITE_API_URL}/api/rods",
               {
                   method: "POST",
                   headers: {
@@ -385,7 +385,7 @@ function App() {
 
         try {
           const response = await fetch(
-            "http://localhost:3001/api/fish",
+            "${import.meta.env.VITE_API_URL}/api/fish",
             {
               method: "POST",
               headers: {

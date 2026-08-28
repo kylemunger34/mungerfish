@@ -28,7 +28,7 @@ function CatchRecords({
     });
 
     useEffect(() => {
-        fetch("http://localhost:3001/api/fish")
+        fetch("${import.meta.env.VITE_API_URL}/api/fish")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch fish");
