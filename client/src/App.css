@@ -4,6 +4,7 @@ select,
 textarea {
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: transparent;
 }
 
 button:focus,
@@ -11,6 +12,19 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
+  box-shadow: none;
+}
+
+input[type="date"],
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: block;
 }
 
 html {
@@ -370,6 +384,10 @@ body,
   font-family: inherit;
 
   outline: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .rod-input:focus {

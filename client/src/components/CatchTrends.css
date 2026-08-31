@@ -16,6 +16,16 @@ textarea:focus {
   outline: none;
 }
 
+
+.catch-trends-chart,
+.catch-trends-chart svg,
+.catch-trends-chart svg:focus,
+.catch-trends-chart svg:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .catch-trends-content {
   display: flex;
   flex-direction: column;
