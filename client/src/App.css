@@ -380,6 +380,7 @@ input[type="date"].rod-input {
 
 .rod-input {
   width: 100%;
+  height: 34px;
 
   padding: 6px 8px;
 
@@ -1165,8 +1166,9 @@ input[type="date"].rod-input {
 .edit-controls {
   position: absolute;
 
-  right: 5px;
-  bottom: 5px;
+  right: 15px;
+  bottom: 0px;
+
 
   display: flex;
   gap: 5px;
