@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./CatchMap.css";
+import { formatDateTime } from "../utils/dateUtils";
 import {
   MapContainer,
   TileLayer,
@@ -128,9 +129,7 @@ function CatchMap({ catches }) {
 
                   <div className="catch-map-popup-date">
                     {item.caught_at
-                      ? new Date(
-                          item.caught_at
-                        ).toLocaleString()
+                      ? formatDateTime(item.caught_at)
                       : ""}
                   </div>
 

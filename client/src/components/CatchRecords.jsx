@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CatchMap from "./CatchMap";
+import { formatDateKey, formatDateTime } from "../utils/dateUtils";
 
 function CatchRecords({
     onBack,
@@ -55,9 +56,7 @@ function CatchRecords({
 
     const filteredCatches = fish.filter((fish) => {
         if (filters.date) {
-            const fishDate = new Date(fish.caught_at)
-                .toISOString()
-                .split("T")[0];
+            const fishDate = formatDateKey(fish.caught_at);
 
             if (fishDate !== filters.date) {
                 return false;
@@ -409,10 +408,6 @@ function CatchRecords({
                             const isExpanded =
                                 expandedFish === fish.fish_id;
 
-                            const date = new Date(
-                                fish.caught_at
-                            );
-
                             return (
                                 <div
                                     className={`catch-card ${
@@ -440,7 +435,7 @@ function CatchRecords({
                                             </span>
 
                                             <span className="catch-date">
-                                                {date.toLocaleString()}
+                                                {formatDateTime(fish.caught_at)}
                                             </span>
 
                                         </div>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import "./Statistics.css";
+import { formatDateKey, formatDateOnly } from "../utils/dateUtils";
 
 function Statistics({ onBack }) {
   const [fish, setFish] = useState([]);
@@ -59,13 +60,9 @@ function Statistics({ onBack }) {
       return "Unknown";
     }
 
-    const date = new Date(caughtAt);
+    const dateValue = formatDateOnly(caughtAt);
 
-    if (Number.isNaN(date.getTime())) {
-      return "Unknown";
-    }
-
-    return date.toLocaleDateString();
+    return dateValue || "Unknown";
   };
 
   const getFilterValue = (catchRecord, key) => {
@@ -98,7 +95,7 @@ function Statistics({ onBack }) {
     const caughtDate = new Date(item.caught_at);
 
     if (startDate) {
-        const start = new Date(`${startDate}T00:00:00`);
+        const start = new Date(`${startDate}T12:00:00`);
 
         if (caughtDate < start) {
         return false;
@@ -106,7 +103,7 @@ function Statistics({ onBack }) {
     }
 
     if (endDate) {
-        const end = new Date(`${endDate}T23:59:59`);
+        const end = new Date(`${endDate}T12:00:00`);
 
         if (caughtDate > end) {
         return false;
@@ -183,10 +180,6 @@ function Statistics({ onBack }) {
         ========================= */}
 
         <div className="statistics-section">
-
-          <span className="statistics-section-label">
-            Chart By
-          </span>
 
           <div className="statistics-date-filter">
 

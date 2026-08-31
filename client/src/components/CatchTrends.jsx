@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import "./CatchTrends.css";
+import { formatDateKey, formatDateOnly } from "../utils/dateUtils";
 import {
     LineChart,
     Line,
@@ -26,7 +27,7 @@ function CatchTrends({
     const [filterOpen, setFilterOpen] = useState(false);
 
     const [filters, setFilters] = useState({
-        date: new Date().toISOString().split("T")[0],
+        date: formatDateKey(new Date()),
         weight: "",
         color: "",
         bait: "",
@@ -56,9 +57,7 @@ function CatchTrends({
 
     const filteredCatches = fish.filter((fish) => {
         if (filters.date) {
-            const fishDate = new Date(fish.caught_at)
-                .toISOString()
-                .split("T")[0];
+            const fishDate = formatDateKey(fish.caught_at);
 
             if (fishDate !== filters.date) {
                 return false;
@@ -240,9 +239,7 @@ function CatchTrends({
                         className="catch-clear-filters"
                         onClick={() => {
                             setFilters({
-                                date: new Date()
-                                    .toISOString()
-                                    .split("T")[0],
+                                date: formatDateKey(new Date()),
                                 weight: "",
                                 color: "",
                                 bait: "",
@@ -450,16 +447,7 @@ function CatchTrends({
 
                         <span className="catch-trends-date-value">
                             {filters.date
-                                ? new Date(
-                                    `${filters.date}T00:00:00`
-                                ).toLocaleDateString(
-                                    undefined,
-                                    {
-                                        weekday: "short",
-                                        month: "short",
-                                        day: "numeric",
-                                    }
-                                )
+                                ? formatDateOnly(filters.date)
                                 : "All dates"}
                         </span>
 
