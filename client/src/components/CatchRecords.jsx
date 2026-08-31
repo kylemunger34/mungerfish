@@ -172,7 +172,7 @@ function CatchRecords({
                     className="catch-map-button"
                     onClick={() => setMapView((current) => !current)}
                     >
-                    {mapView ? "×" : "⌖"}
+                    ⌖
                     </button>
                 )}
 
