@@ -425,22 +425,24 @@ textarea:focus {
 
 .statistics-date-input {
   width: 100%;
-
   min-width: 0;
+  height: 34px;
 
-  padding: 6px 5px;
+  padding: 6px 8px;
 
   border: 1px solid #d9dddb;
   border-radius: 6px;
 
   background: #ffffff;
-
   color: #263a35;
 
   font-family: inherit;
-  font-size: 12px;
+  font-size: 16px;
 
   outline: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .statistics-date-input:focus {
