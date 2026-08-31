@@ -118,7 +118,7 @@ function App() {
   const handleSaveRod = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/${selectedRod.rod_id}`,
+        `${import.meta.env.VITE_API_URL}/api/rods/${selectedRod.rod_id}`,
         {
           method: "PUT",
           headers: {

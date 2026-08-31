@@ -1,3 +1,18 @@
+button,
+input,
+select,
+textarea {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
 .catch-map-container {
   position: relative;
 

@@ -1,25 +1,52 @@
+button,
+input,
+select,
+textarea {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.app {
-  height: 100vh;
-  width: 100vw;
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* =========================
-   Main Body
-========================= */
+.app {
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
 
 .body {
   position: relative;
-
-  width: 100vw;
-  height: calc(100vh - 50px);
-
+  width: 100%;
+  height: calc(100dvh - 50px);
   overflow: hidden;
 }
 
