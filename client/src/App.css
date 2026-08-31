@@ -28,6 +28,15 @@ textarea {
   font-size: 16px !important;
 }
 
+.catch-map-button,
+.catch-filter-button,
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
 html {
   overflow: hidden;
 }
@@ -282,7 +291,6 @@ textarea {
   justify-content: center;
 
   padding: 0;
-  padding-bottom: 1px;
 
   cursor: pointer;
 
@@ -323,7 +331,7 @@ textarea {
   flex-shrink: 0;
 
   padding: 0;
-  padding-bottom: 4px;
+
 
   border: none;
   border-radius: 8px;
@@ -727,8 +735,6 @@ input[type="date"].rod-input {
 
   cursor: pointer;
 
-  padding-bottom: 6px;
-
   transition: background 0.2s;
 }
 
@@ -1070,7 +1076,7 @@ input[type="date"].rod-input {
   align-items: center;
   justify-content: center;
 
-  padding-bottom: 0px;
+
 
   cursor: pointer;
 
@@ -1166,8 +1172,6 @@ input[type="date"].rod-input {
 
   cursor: pointer;
 
-  padding-bottom: 6px;
-
   transition: background 0.2s;
 }
 
@@ -1262,7 +1266,6 @@ input[type="date"].rod-input {
   justify-content: center;
 
   padding: 0;
-  padding-bottom: 0px;
   transform: scale(1.05);
 }
 
@@ -1298,7 +1301,6 @@ input[type="date"].rod-input {
   justify-content: center;
 
   padding: 0;
-  padding-bottom: 2px;
 
   cursor: pointer;
 
