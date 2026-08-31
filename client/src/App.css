@@ -367,6 +367,15 @@ body,
    Rod Edit Inputs
 ========================= */
 
+input[type="date"].rod-input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 .rod-input {
   width: 100%;
 
