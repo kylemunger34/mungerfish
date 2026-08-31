@@ -30,7 +30,6 @@ textarea {
 
 .catch-map-button,
 .catch-filter-button,
-.back-button,
 .options-button {
     display: flex;
     align-items: center;
@@ -349,6 +348,8 @@ textarea {
   justify-content: center;
 
   cursor: pointer;
+
+  padding-bottom: 8px;
 
   transition: background 0.2s;
 }
