@@ -552,18 +552,9 @@ function CatchTrends({
 
                     )}
 
-                    <div className="catch-trends-total">
-
-                        <span className="catch-trends-total-number">
-                            {filteredCatches.length}
-                        </span>
-
-                        <span className="catch-trends-total-label">
-                            {filteredCatches.length === 1
-                                ? "Catch"
-                                : "Catches"}
-                        </span>
-
+                    <div className="catch-count-tab">
+                        {filteredCatches.length}{" "}
+                        {filteredCatches.length === 1 ? "Fish" : "Fish"}
                     </div>
 
                 </div>

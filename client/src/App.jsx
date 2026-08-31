@@ -996,6 +996,8 @@ function App() {
         )}
       </div>
 
+
+      <div className="app-bottom-safe-area" />
     </div>
   );
 }
