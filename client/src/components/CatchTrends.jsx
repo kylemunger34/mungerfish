@@ -1,7 +1,11 @@
 
 import { useEffect, useState } from "react";
 import "./CatchTrends.css";
-import { formatDateKey, formatDateOnly } from "../utils/dateUtils";
+import {
+    formatDateKey,
+    formatDateOnly,
+    parseDateValue,
+} from "../utils/dateUtils";
 import {
     LineChart,
     Line,
@@ -105,11 +109,15 @@ function CatchTrends({
     const chartData = [...filteredCatches]
         .sort(
             (a, b) =>
-                new Date(a.caught_at) -
-                new Date(b.caught_at)
+                (parseDateValue(a.caught_at)?.getTime() ?? 0) -
+                (parseDateValue(b.caught_at)?.getTime() ?? 0)
         )
         .map((fish, index, sortedFish) => {
-            const date = new Date(fish.caught_at);
+            const date = parseDateValue(fish.caught_at);
+
+            if (!date) {
+                return null;
+            }
 
             const time =
                 date.getHours() +
@@ -121,9 +129,11 @@ function CatchTrends({
 
             // Check previous catches for overlapping times
             for (let i = index - 1; i >= 0; i--) {
-                const previousDate = new Date(
-                    sortedFish[i].caught_at
-                );
+                const previousDate = parseDateValue(sortedFish[i].caught_at);
+
+                if (!previousDate) {
+                    continue;
+                }
 
                 const previousTime =
                     previousDate.getHours() +
@@ -148,7 +158,8 @@ function CatchTrends({
                     second: "2-digit",
                 }),
             };
-        });
+        })
+        .filter(Boolean);
 
     if (loading) {
         return (

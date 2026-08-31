@@ -20,6 +20,37 @@ export function parseDateValue(value) {
     }
   }
 
+  const dateTimeMatch = text.match(
+    /^(\d{4})-(\d{2})-(\d{2})[T\s](\d{2}):(\d{2})(?::(\d{2}))?(?:\.(\d{1,3}))?(?:Z|[+-]\d{2}:?\d{2})?$/
+  );
+
+  if (dateTimeMatch) {
+    const [
+      ,
+      year,
+      month,
+      day,
+      hour,
+      minute,
+      second = "0",
+      milliseconds = "0",
+    ] = dateTimeMatch;
+
+    const localDate = new Date(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      Number(hour),
+      Number(minute),
+      Number(second),
+      Number(milliseconds.padEnd(3, "0").slice(0, 3))
+    );
+
+    if (!Number.isNaN(localDate.getTime())) {
+      return localDate;
+    }
+  }
+
   const directParse = new Date(text);
 
   if (!Number.isNaN(directParse.getTime())) {

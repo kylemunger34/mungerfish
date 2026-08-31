@@ -41,7 +41,7 @@ textarea:focus {
 
   color: #71817a;
 
-  font-size: 14px;
+  font-size: var(--font-md);
 
   text-align: center;
 }
@@ -52,13 +52,13 @@ textarea:focus {
 
   gap: 3px;
 
-  font-size: 12px;
+  font-size: var(--font-sm);
 
   color: #263a35;
 }
 
 .catch-map-popup strong {
-  font-size: 14px;
+  font-size: var(--font-md);
 
   margin-bottom: 2px;
 }
@@ -72,5 +72,5 @@ textarea:focus {
 
   color: #71817a;
 
-  font-size: 10px;
+  font-size: var(--font-xs);
 }

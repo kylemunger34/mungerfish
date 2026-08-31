@@ -1,0 +1,59 @@
+:root {
+  --font-micro: 10px;
+  --font-xs: 11px;
+  --font-sm: 12px;
+  --font-md: 14px;
+  --font-lg: 16px;
+  --font-xl: 18px;
+  --font-2xl: 20px;
+  --font-3xl: 22px;
+  --font-4xl: 26px;
+  --text-primary: #263a35;
+  --text-secondary: #71817a;
+  --surface-soft: #f5f8f6;
+  --surface-strong: #dcebe4;
+  --surface-stronger: #cfe3d9;
+}
+
+html, body, #root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: #ffffff;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: var(--font-lg);
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+button,
+input,
+select,
+textarea,
+span,
+label,
+p,
+div,
+strong {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+small,
+.caption {
+  font-size: var(--font-sm);
+}

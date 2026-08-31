@@ -58,7 +58,7 @@ textarea:focus {
 }
 
 .catch-trends-date-value {
-  font-size: 12px;
+  font-size: var(--font-sm);
   font-weight: 600;
 
   color: #263a35;
@@ -88,7 +88,7 @@ textarea:focus {
 
   color: #71817a;
 
-  font-size: 12px;
+  font-size: var(--font-sm);
 
   text-align: center;
 }
@@ -110,14 +110,14 @@ textarea:focus {
 }
 
 .catch-trends-total-number {
-  font-size: 20px;
+  font-size: var(--font-2xl);
   font-weight: 700;
 
   color: #263a35;
 }
 
 .catch-trends-total-label {
-  font-size: 9px;
+  font-size: var(--font-xs);
 
   color: #71817a;
 
