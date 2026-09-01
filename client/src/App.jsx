@@ -5,6 +5,7 @@ import CatchRecords from "./components/CatchRecords";
 import Statistics from "./components/Statistics";
 import CatchTrends from "./components/CatchTrends";
 import ManageItems from "./components/ManageItems";
+import { wakeServer } from "./api";
 
 import "./App.css";
 
@@ -26,6 +27,8 @@ function App() {
   const [statisticsPage, setStatisticsPage] = useState(false);
   const [catchTrendsPage, setCatchTrendsPage] = useState(false);
   const [manageItemsPage, setManageItemsPage] = useState(false);
+  const [serverReady, setServerReady] = useState(false);
+  const [serverError, setServerError] = useState(false);
   const bodyRef = useRef(null);
   const dragRef = useRef({
     rodId: null,
@@ -38,41 +41,57 @@ function App() {
   });
 
   useEffect(() => {
-    Promise.all([
-      fetch(`${import.meta.env.VITE_API_URL}/api/rods`).then((response) =>
-        response.json()
-      ),
-      fetch(`${import.meta.env.VITE_API_URL}/api/baits`).then((response) =>
-        response.json()
-      ),
-      fetch(`${import.meta.env.VITE_API_URL}/api/colors`).then((response) =>
-        response.json()
-      ),
-      fetch(`${import.meta.env.VITE_API_URL}/api/weights`).then((response) =>
-        response.json()
-      ),
-      fetch(`${import.meta.env.VITE_API_URL}/api/species`).then((response) =>
-        response.json()
-      ),
-    ])
-      .then(
-        ([
-          rodsData,
-          baitsData,
-          colorsData,
-          weightsData,
-          speciesData,
-        ]) => {
+      if (!serverReady) return;
+
+      const fetchData = async () => {
+          const responses = await Promise.all([
+              fetch(`${import.meta.env.VITE_API_URL}/api/rods`),
+              fetch(`${import.meta.env.VITE_API_URL}/api/baits`),
+              fetch(`${import.meta.env.VITE_API_URL}/api/colors`),
+              fetch(`${import.meta.env.VITE_API_URL}/api/weights`),
+              fetch(`${import.meta.env.VITE_API_URL}/api/species`),
+          ]);
+
+          responses.forEach((response) => {
+              if (!response.ok) {
+                  throw new Error("Failed to load application data");
+              }
+          });
+
+          const [
+              rodsData,
+              baitsData,
+              colorsData,
+              weightsData,
+              speciesData,
+          ] = await Promise.all(
+              responses.map((response) => response.json())
+          );
+
           setRods(rodsData);
           setBaits(baitsData);
           setColors(colorsData);
           setWeights(weightsData);
           setSpecies(speciesData);
-        }
-      )
-      .catch((error) => {
-        console.error("Failed to load data:", error);
+      };
+
+      fetchData().catch((error) => {
+          console.error("Failed to load data:", error);
       });
+  }, [serverReady]);
+
+  useEffect(() => {
+      const startApp = async () => {
+          try {
+              await wakeServer();
+              setServerReady(true);
+          } catch (error) {
+              console.error("Server failed to wake:", error);
+              setServerError(true);
+          }
+      };
+
+      startApp();
   }, []);
 
   const handleRodClick = (rod) => {
@@ -454,6 +473,34 @@ function App() {
       }
     );
   };
+
+  if (!serverReady) {
+      return (
+          <div className="server-loading">
+              {serverError ? (
+                  <>
+                      <div className="server-loading-title">
+                          Unable to connect
+                      </div>
+
+                      <div className="server-loading-text">
+                          Please try again in a moment.
+                      </div>
+                  </>
+              ) : (
+                  <>
+                      <div className="server-loading-title">
+                          Intellifish
+                      </div>
+
+                      <div className="server-loading-text">
+                          Connecting...
+                      </div>
+                  </>
+              )}
+          </div>
+      );
+  }
 
   return (
     <div className="app">

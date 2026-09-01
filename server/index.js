@@ -49,6 +49,11 @@ app.get("/", (req, res) => {
     res.send("Fishing server is running");
 });
 
+// Backend health check
+app.get("/api/health", (req, res) => {
+    res.json({ status: "ok" });
+});
+
 //fetch rod info for diagram
 app.get("/api/rods", async (req, res) => {
     let connection;
