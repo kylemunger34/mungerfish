@@ -508,7 +508,7 @@ function App() {
       <header className="header">
 
         <div className="header-title">
-          Mungerfish
+          MungerFish
         </div>
 
         <div className="header-buttons">
