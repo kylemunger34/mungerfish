@@ -490,7 +490,7 @@ function App() {
               ) : (
                   <>
                       <div className="server-loading-title">
-                          Intellifish
+                          MungerFish
                       </div>
 
                       <div className="server-loading-text">
