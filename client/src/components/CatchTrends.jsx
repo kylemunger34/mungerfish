@@ -523,10 +523,24 @@ function CatchTrends({
                                     />
 
                                     <Tooltip
-                                        formatter={() => ["Fish", "Catch"]}
-                                        labelFormatter={(_, payload) =>
-                                            payload?.[0]?.payload?.timeLabel || ""
-                                        }
+                                        content={({ active, payload }) => {
+                                            if (!active || !payload?.length) return null;
+
+                                            return (
+                                                <div
+                                                    style={{
+                                                        background: "#ffffff",
+                                                        border: "1px solid #d9dddb",
+                                                        borderRadius: "6px",
+                                                        padding: "4px 7px",
+                                                        fontSize: "10px",
+                                                        color: "#263a35",
+                                                    }}
+                                                >
+                                                    {payload[0].payload.timeLabel}
+                                                </div>
+                                            );
+                                        }}
                                     />
 
                                     <Line
