@@ -41,52 +41,51 @@ function App() {
   });
 
   useEffect(() => {
-      if (!serverReady) return;
-
-      const fetchData = async () => {
-          const responses = await Promise.all([
-              fetch(`${import.meta.env.VITE_API_URL}/api/rods`),
-              fetch(`${import.meta.env.VITE_API_URL}/api/baits`),
-              fetch(`${import.meta.env.VITE_API_URL}/api/colors`),
-              fetch(`${import.meta.env.VITE_API_URL}/api/weights`),
-              fetch(`${import.meta.env.VITE_API_URL}/api/species`),
-          ]);
-
-          responses.forEach((response) => {
-              if (!response.ok) {
-                  throw new Error("Failed to load application data");
-              }
-          });
-
-          const [
-              rodsData,
-              baitsData,
-              colorsData,
-              weightsData,
-              speciesData,
-          ] = await Promise.all(
-              responses.map((response) => response.json())
-          );
-
-          setRods(rodsData);
-          setBaits(baitsData);
-          setColors(colorsData);
-          setWeights(weightsData);
-          setSpecies(speciesData);
-      };
-
-      fetchData().catch((error) => {
-          console.error("Failed to load data:", error);
-      });
-  }, [serverReady]);
-
-  useEffect(() => {
       const startApp = async () => {
           try {
+              // First make sure the backend is awake
               await wakeServer();
+
+              const API_URL = import.meta.env.VITE_API_URL;
+
+              const responses = await Promise.all([
+                  fetch(`${API_URL}/api/rods`),
+                  fetch(`${API_URL}/api/baits`),
+                  fetch(`${API_URL}/api/colors`),
+                  fetch(`${API_URL}/api/weights`),
+                  fetch(`${API_URL}/api/species`),
+                  fetch(`${API_URL}/api/fish`),
+              ]);
+
+              responses.forEach((response) => {
+                  if (!response.ok) {
+                      throw new Error(
+                          `API request failed: ${response.status}`
+                      );
+                  }
+              });
+
+              const [
+                  rodsData,
+                  baitsData,
+                  colorsData,
+                  weightsData,
+                  speciesData,
+                  fishData,
+              ] = await Promise.all(
+                  responses.map((response) => response.json())
+              );
+
+              setRods(rodsData);
+              setBaits(baitsData);
+              setColors(colorsData);
+              setWeights(weightsData);
+              setSpecies(speciesData);
+
               setServerReady(true);
+
           } catch (error) {
-              console.error("Server failed to wake:", error);
+              console.error("Failed to start application:", error);
               setServerError(true);
           }
       };
